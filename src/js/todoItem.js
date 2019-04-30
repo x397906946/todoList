@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-
+import '../css/todoItem.css'
 export default class TodoItem extends Component{
   constructor(props){
     super(props)
@@ -8,9 +8,10 @@ export default class TodoItem extends Component{
   }
   render() {
     return (
-      <div>
+      <div className="TodoItem">
         <input type="checkbox" checked={this.props.todo.status === 'completed'}
-          onChange={this.toggle}/>{this.props.todo.title}
+          onChange={this.toggle}/>
+          <span className="title">{this.props.todo.title}</span>
           <button onClick={this.delete}>删除</button>
       </div>
     );

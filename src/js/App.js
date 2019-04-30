@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import 'normalize.css'
-import './reset.css'
-import './App.css';
+import '../../node_modules/normalize.css/normalize.css'
+import '../css/reset.css'
+import '../css/App.css';
 import TodoInput from './todoInput'
 import TodoItem from './todoItem'
 
@@ -34,7 +34,7 @@ class App extends Component {
           <TodoInput content={this.state.newTodo}
                      onSubmit={this.addTodo} onChange={this.changeTitle}/>
         </div>
-        <ol>
+        <ol className="todoList">
           {todos}
         </ol>
       </div>
