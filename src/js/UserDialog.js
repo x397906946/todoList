@@ -29,7 +29,20 @@ export default class UserDialog extends Component {
       this.props.onSignUp.call(null, user)
     }
     let error = error => {
-      alert(error)
+      switch(error.code){
+        case 200:
+          alert('没有提供用户名，或者用户名为空。')
+          break
+        case 201:
+          alert('没有提供密码，或者密码为空。')
+          break
+        case 202:
+          alert('用户名已被占用。')
+          break
+        default:
+          alert(error)
+          break
+      }
     }
     signUp(username, password, success, error)
   }
@@ -40,12 +53,22 @@ export default class UserDialog extends Component {
       this.props.onSignIn.call(null, user)
     }
     let error = error => {
-      alert(error)
+      switch (error.code) {
+        case 210:
+          alert('用户名和密码不匹配。')
+          break
+        case 211:
+          alert('找不到用户。')
+          break
+        default:
+          alert(error)
+          break
+      }
     }
     signIn(username, password, success, error)
   }
   changeFormData(key, e){
-    let stateCopy = JSON.parse(JSON.stringify(this.state))
+    let stateCopy = deepCopy(this.state)
     stateCopy.formData[key] = e.target.value
     this.setState(stateCopy)
   }
@@ -106,4 +129,8 @@ export default class UserDialog extends Component {
       </div>
     )
   }
+}
+
+function deepCopy(obj){
+  return JSON.parse(JSON.stringify(obj))
 }
