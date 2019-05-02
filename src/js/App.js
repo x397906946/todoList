@@ -41,6 +41,10 @@ class App extends Component {
       </div>
     )
   }
+  componentDidUpdate() {
+    localStore.save('todoList', this.state.todoList)
+  }
+
   addTodo(e){
     this.state.todoList.push({
       id: idMaker(),
@@ -52,24 +56,20 @@ class App extends Component {
       newTodo: '',
       todoList: this.state.todoList
     })
-    localStore.save('todoList', this.state.todoList)
   }
   changeTitle(e) {
     this.setState({
       newTodo: e.target.value,
       todoList: this.state.todoList
     })
-    localStore.save('todoList', this.state.todoList)
   }
   toggle(e, todo){
     todo.status = todo.status === 'completed' ? '' : 'completed'
     this.setState(this.state)
-    localStore.save('todoList', this.state.todoList)
-  }
+}
   delete(e, todo){
     todo.deleted = true
     this.setState(this.state)
-    localStore.save('todoList', this.state.todoList)
   }
 }
 
