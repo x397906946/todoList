@@ -27,6 +27,11 @@ export function getCurrentUser(){
   return user ? getUserFromAVUser(user) : null;
 }
 
+export function signOut() {
+  AV.User.logOut()
+  return undefined
+}
+
 function getUserFromAVUser(AVUser) {
   return {
     id: AVUser.id,
