@@ -20,6 +20,7 @@ export default class UserDialog extends Component {
     this.changeFormData = this.changeFormData.bind(this)
     this.showForgotPassword = this.showForgotPassword.bind(this)
     this.resetPassword = this.resetPassword.bind(this)
+    this.returnToSignIn = this.returnToSignIn.bind(this)
   }
   render() {
     let signUpForm = (
@@ -93,6 +94,7 @@ export default class UserDialog extends Component {
           </div>
           <div className="row actions">
             <button type="submit">发送重置邮件</button>
+            <a href="#" onClick={this.returnToSignIn}>返回登录</a>
           </div>
         </form>
       </div>
@@ -168,6 +170,11 @@ export default class UserDialog extends Component {
   resetPassword(e){
     e.preventDefault()
     sendPasswordResetEmail(this.state.formData.email)
+  }
+  returnToSignIn(){
+    let stateCopy = deepCopy(this.state)
+    stateCopy.selectedTab = 'signInOrSignUp'
+    this.setState(stateCopy)
   }
 }
 
