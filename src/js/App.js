@@ -10,6 +10,7 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
+      user: {},
       newTodo: '',
       todoList: []
     }
@@ -17,6 +18,7 @@ class App extends Component {
     this.changeTitle = this.changeTitle.bind(this)
     this.toggle = this.toggle.bind(this)
     this.delete = this.delete.bind(this)
+    this.onSignUp = this.onSignUp.bind(this)
   }
   render() {
     let todos = this.state.todoList
@@ -30,7 +32,7 @@ class App extends Component {
     })
     return (
       <div className="App">
-        <h1>我的待办</h1>
+        <h1>{this.state.user.username || '我'}的待办</h1>
         <div className="inputWrapper">
           <TodoInput content={this.state.newTodo}
                      onSubmit={this.addTodo} onChange={this.changeTitle}/>
@@ -38,7 +40,7 @@ class App extends Component {
         <ol className="todoList">
           {todos}
         </ol>
-        <UserDialog/>
+        <UserDialog onSignUp={this.onSignUp}/>
       </div>
     )
   }
@@ -69,6 +71,10 @@ class App extends Component {
 }
   delete(e, todo){
     todo.deleted = true
+    this.setState(this.state)
+  }
+  onSignUp(user){
+    this.state.user = user
     this.setState(this.state)
   }
 }

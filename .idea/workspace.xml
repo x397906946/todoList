@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba53694d-2714-4084-832c-f6a1c9a9bea5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/js/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/UserDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/UserDialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/leanCloud.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/leanCloud.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,11 +25,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/js/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="713">
-              <caret line="31" column="27" lean-forward="true" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
+            <state relative-caret-position="506">
+              <caret line="43" column="12" lean-forward="true" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -49,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/UserDialog.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="759">
-              <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
+            <state relative-caret-position="391">
+              <caret line="26" column="50" lean-forward="true" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -58,11 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/leanCloud.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+            <state relative-caret-position="556">
+              <caret line="25" column="10" lean-forward="true" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -144,10 +144,10 @@
         <option value="$PROJECT_DIR$/src/js/todoInput.js" />
         <option value="$PROJECT_DIR$/src/css/todoInput.css" />
         <option value="$PROJECT_DIR$/src/js/localStorage.js" />
-        <option value="$PROJECT_DIR$/src/js/App.js" />
         <option value="$PROJECT_DIR$/src/css/UserDialog.css" />
-        <option value="$PROJECT_DIR$/src/js/UserDialog.js" />
         <option value="$PROJECT_DIR$/src/js/leanCloud.js" />
+        <option value="$PROJECT_DIR$/src/js/App.js" />
+        <option value="$PROJECT_DIR$/src/js/UserDialog.js" />
       </list>
     </option>
   </component>
@@ -236,12 +236,12 @@
       <option name="presentableId" value="Default" />
       <updated>1556601948422</updated>
       <workItem from="1556601949677" duration="4016000" />
-      <workItem from="1556607654316" duration="18393000" />
+      <workItem from="1556607654316" duration="18900000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22409000" />
+    <option name="totallyTimeSpent" value="22916000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="960" height="1032" extended-state="0" />
@@ -414,12 +414,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/App.js">
+    <entry file="file://$PROJECT_DIR$/src/js/leanCloud.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
-          <caret line="31" column="27" lean-forward="true" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
+        <state relative-caret-position="556">
+          <caret line="25" column="10" lean-forward="true" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/UserDialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="26" column="50" lean-forward="true" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -431,20 +438,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/UserDialog.js">
+    <entry file="file://$PROJECT_DIR$/src/js/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="759">
-          <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
+        <state relative-caret-position="506">
+          <caret line="43" column="12" lean-forward="true" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/leanCloud.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
         </state>
       </provider>
     </entry>
