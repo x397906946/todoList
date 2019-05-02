@@ -40,18 +40,18 @@ class App extends Component {
         </h1>
         <div className="inputWrapper">
           <TodoInput content={this.state.newTodo}
-                     onSubmit={this.addTodo} onChange={this.changeTitle}/>
+                     onSubmit={this.addTodo}
+                     onChange={this.changeTitle}/>
         </div>
         <ol className="todoList">
           {todos}
         </ol>
-        {this.state.user.id ? null : <UserDialog onSignUp={this.onSignUpOrSignIn} onSignIn={this.onSignUpOrSignIn}/>}
+        {this.state.user.id ? null :
+          <UserDialog onSignUp={this.onSignUpOrSignIn}
+                      onSignIn={this.onSignUpOrSignIn}/>}
       </div>
     )
   }
-  componentDidUpdate() {
-  }
-
   addTodo(e){
     this.state.todoList.push({
       id: idMaker(),

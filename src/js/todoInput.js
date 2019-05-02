@@ -8,7 +8,7 @@ export default class TodoInput extends Component {
     this.changeTitle = this.changeTitle.bind(this)
   }
   render() {
-    return <input type="text" className="TodoInput" Value={this.props.content}
+    return <input type="text" className="TodoInput" value={this.props.content}
                   onKeyPress={this.submit} onChange={this.changeTitle}/>
   }
   submit(e){
