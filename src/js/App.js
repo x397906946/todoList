@@ -5,7 +5,7 @@ import '../css/App.css';
 import TodoInput from './todoInput'
 import TodoItem from './todoItem'
 import UserDialog from './UserDialog'
-import {getCurrentUser, signOut} from './leanCloud'
+import {getCurrentUser, signOut, TodoModel} from './leanCloud'
 
 class App extends Component {
   constructor(props){
@@ -21,6 +21,15 @@ class App extends Component {
     this.delete = this.delete.bind(this)
     this.onSignUpOrSignIn = this.onSignUpOrSignIn.bind(this)
     this.signOut = this.signOut.bind(this)
+
+    let user = getCurrentUser()
+    if(user){
+      TodoModel.getByUser(user, todos => {
+        let stateCopy = deepCopy(this.state)
+        stateCopy.todoList = todos
+        this.setState(stateCopy)
+      })
+    }
   }
   render() {
     let todos = this.state.todoList
@@ -53,15 +62,20 @@ class App extends Component {
     )
   }
   addTodo(e){
-    this.state.todoList.push({
-      id: idMaker(),
+    let newTodo = {
       title: e.target.value,
       status: null,
       deleted: false
-    })
-    this.setState({
-      newTodo: '',
-      todoList: this.state.todoList
+    }
+    TodoModel.create(newTodo, id => {
+      newTodo.id = id
+      this.state.todoList.push(newTodo)
+      this.setState({
+        newTodo: '',
+        todoList: this.state.todoList
+      })
+    }, error => {
+      console.log(error)
     })
   }
   changeTitle(e) {
@@ -75,8 +89,10 @@ class App extends Component {
     this.setState(this.state)
 }
   delete(e, todo){
-    todo.deleted = true
-    this.setState(this.state)
+    TodoModel.destroy(todo.id, () => {
+      todo.deleted = true
+      this.setState(this.state)
+    })
   }
   onSignUpOrSignIn(user){
     let stateCopy = deepCopy(this.state)
@@ -96,8 +112,3 @@ function deepCopy(obj){
 }
 
 export default App;
-
-let id = 0
-function idMaker() {
-  return ++id
-}
