@@ -22,16 +22,18 @@ export const TodoModel ={
     let acl = new AV.ACL()
     acl.setPublicReadAccess(false)
     acl.setWriteAccess(AV.User.current(), true)
+    acl.setReadAccess(AV.User.current(), true)
     todo.setACL(acl)
 
-    todo.save().then(function (response) {
+    todo.save().then(response => {
       successFn.call(null, response.id)
-    }, function (error) {
+    }, error => {
       errorFn && errorFn.call(null, error)
     })
   },
   getByUser(user, successFn, errorFn){
     let query = new AV.Query('Todo')
+    query.equalTo('deleted', false)
     query.find().then(response => {
       let array = response.map(t => {
         return {id: t.id, ...t.attributes}
@@ -54,12 +56,7 @@ export const TodoModel ={
     })
   },
   destroy(todoId, successFn, errorFn){
-    let todo = AV.Object.createWithoutData('Todo', todoId)
-    todo.destroy().then(response => {
-      successFn && successFn.call(null)
-    }, error => {
-      errorFn && errorFn.call(null, error)
-    })
+    TodoModel.update({id: todoId, deleted: true}, successFn, errorFn)
   }
 }
 export function signUp(email, username, password, successFn, errorFn){

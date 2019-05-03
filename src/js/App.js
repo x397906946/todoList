@@ -64,7 +64,7 @@ class App extends Component {
   addTodo(e){
     let newTodo = {
       title: e.target.value,
-      status: null,
+      status: '',
       deleted: false
     }
     TodoModel.create(newTodo, id => {
@@ -85,8 +85,14 @@ class App extends Component {
     })
   }
   toggle(e, todo){
+    let oldStatus = todo.status
     todo.status = todo.status === 'completed' ? '' : 'completed'
-    this.setState(this.state)
+    TodoModel.update(todo, () => {
+      this.setState(this.state)
+    }, error => {
+      todo.status = oldStatus
+      this.setState(this.state)
+    })
 }
   delete(e, todo){
     TodoModel.destroy(todo.id, () => {
