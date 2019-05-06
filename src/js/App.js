@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import '../../node_modules/normalize.css/normalize.css'
-import '../css/reset.css'
+import '../../node_modules/normalize.css/normalize.css';
+import '../css/reset.css';
 import '../css/App.css';
-import TodoInput from './todoInput'
-import TodoItem from './todoItem'
-import UserDialog from './UserDialog'
-import {getCurrentUser, signOut, TodoModel} from './leanCloud'
+import TodoInput from './todoInput';
+import TodoEdit from './todoEdit';
+import TodoItem from './todoItem';
+import UserDialog from './UserDialog';
+import {getCurrentUser, signOut, TodoModel} from './leanCloud';
 
 class App extends Component {
   constructor(props){
@@ -19,8 +20,11 @@ class App extends Component {
     this.changeTitle = this.changeTitle.bind(this)
     this.toggle = this.toggle.bind(this)
     this.delete = this.delete.bind(this)
+    this.toggleEdit = this.toggleEdit.bind(this)
+    this.deleteAll = this.deleteAll.bind(this)
     this.onSignUpOrSignIn = this.onSignUpOrSignIn.bind(this)
     this.signOut = this.signOut.bind(this)
+    this.editTodo = this.editTodo.bind(this)
 
     let user = getCurrentUser()
     if(user){
@@ -31,20 +35,24 @@ class App extends Component {
       })
     }
   }
+
+
   render() {
     let todos = this.state.todoList
       .filter(item => !item.deleted)
       .map((item, index) => {
-      return (
-        <li key={index}>
-          <TodoItem todo={item} onToggle={this.toggle} onDelete={this.delete}/>
-        </li>
-      )
+        return (
+          <li key={index}>
+            <TodoItem todo={item} onToggle={this.toggle} onDelete={this.delete} onEdit={this.toggleEdit}/>
+            {item.edited ? <TodoEdit type="text" todo={item} onSubmit={this.editTodo}/> : null}
+          </li>
+        )
     })
     return (
       <div className="App">
         <h1>
-          {this.state.user.username || '我'}的待办
+          {this.state.user.username || '我'}的待办事项
+          <button className='deleteAll' onClick={this.deleteAll}>批量删除</button>
           {this.state.user.id ? <button onClick={this.signOut}>登出</button> : null}
         </h1>
         <div className="inputWrapper">
@@ -65,7 +73,8 @@ class App extends Component {
     let newTodo = {
       title: e.target.value,
       status: '',
-      deleted: false
+      deleted: false,
+      edited: false
     }
     TodoModel.create(newTodo, id => {
       newTodo.id = id
@@ -93,11 +102,36 @@ class App extends Component {
       todo.status = oldStatus
       this.setState(this.state)
     })
-}
+  }
   delete(e, todo){
     TodoModel.destroy(todo.id, () => {
       todo.deleted = true
       this.setState(this.state)
+    })
+  }
+  toggleEdit(e, todo){
+    TodoModel.update(todo, () => {
+      todo.edited = !todo.edited
+      this.setState(this.state)
+    })
+  }
+  editTodo(e, todo){
+    if(e.target.value.trim() !== ''){
+      todo.title = e.target.value
+    }
+    todo.edited = false
+    TodoModel.update(todo, () => {
+      this.setState(this.state)
+    })
+  }
+  deleteAll(e){
+    this.state.todoList.map(todo => {
+      if(todo.status === 'completed'){
+        TodoModel.destroy(todo.id, () => {
+          todo.deleted = true
+          this.setState(this.state)
+        })
+      }
     })
   }
   onSignUpOrSignIn(user){

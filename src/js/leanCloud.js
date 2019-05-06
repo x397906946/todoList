@@ -11,12 +11,13 @@ export default AV
 
 //所有跟Todo相关的操作都放到一起
 export const TodoModel ={
-  create({status, title, deleted}, successFn, errorFn){
+  create({status, title, deleted, edited}, successFn, errorFn){
     let Todo = AV.Object.extend('Todo')
     let todo = new Todo()
     todo.set('title', title)
     todo.set('status', status)
     todo.set('deleted', deleted)
+    todo.set('edited', edited)
 
     //根据文档设置单用户权限
     let acl = new AV.ACL()
@@ -43,12 +44,13 @@ export const TodoModel ={
       errorFn && errorFn.call(null, error)
     })
   },
-  update({id, title, status, deleted}, successFn, errorFn){
+  update({id, title, status, deleted, edited}, successFn, errorFn){
     let todo = AV.Object.createWithoutData('Todo', id)
     //对参数局部更新并满足置空处理
     title !== undefined && todo.set('title', title)
     status !== undefined && todo.set('status', status)
     deleted !== undefined && todo.set('deleted', deleted)
+    edited !== undefined && todo.set('edited', edited)
     todo.save().then(response => {
       successFn && successFn.call(null)
     }, error => {

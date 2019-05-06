@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^3.16.6",
     "leancloud-storage": "^3.13.0",
     "normalize.css": "^8.0.1",
     "react": "^16.8.6",

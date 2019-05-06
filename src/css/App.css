@@ -11,8 +11,28 @@
 }
 
 .App > .todoList > li:nth-child(odd) {
-  background: #eee;
+  background: #7be6b6;
+  color: white;
+  border-radius: 8px;
 }
 .App > .todoList > li:nth-child(even) {
   background: transparent;
 }
+
+.App  button {
+  font-size: 14px;
+  height: 32px;
+  padding: 0 1em;
+  border-radius: 4px;
+  border: 1px solid #999;
+  background: white;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  cursor: pointer;
+  outline: none;
+}
+.App  button:hover {border-color: #666; box-shadow: 1px 1px 2px #999}
+.App  button:active {background: #eee;}
+.App h1 button {float: right; background: #7be6b6; font-weight: bold; color: white; margin-left: 1em;}

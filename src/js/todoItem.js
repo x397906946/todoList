@@ -5,14 +5,16 @@ export default class TodoItem extends Component{
     super(props)
     this.toggle = this.toggle.bind(this)
     this.delete = this.delete.bind(this)
+    this.edit = this.edit.bind(this)
   }
   render() {
     return (
       <div className="TodoItem">
         <input type="checkbox" checked={this.props.todo.status === 'completed'}
           onChange={this.toggle}/>
-          <span className="title">{this.props.todo.title}</span>
-          <button onClick={this.delete}>删除</button>
+        <span className="title">{this.props.todo.title}</span>
+        <button onClick={this.edit}>编辑</button>
+        <button onClick={this.delete}>删除</button>
       </div>
     );
   }
@@ -21,5 +23,8 @@ export default class TodoItem extends Component{
   }
   delete(e){
     this.props.onDelete(e, this.props.todo)
+  }
+  edit(e){
+    this.props.onEdit(e, this.props.todo)
   }
 }
