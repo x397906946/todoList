@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/todoInput.css';
+import '../css/editTodo.css';
 
 function submit(props, e) {
   if(e.key === 'Enter'){
@@ -8,7 +8,7 @@ function submit(props, e) {
 }
 
 export default function (props) {
-  return <input type="text" placeholder="在次编辑并按回车保存"
+  return <input type="text" placeholder="在此编辑并按回车保存"
                 className="editTodo"
                 onKeyPress={submit.bind(null, props)}/>
 }

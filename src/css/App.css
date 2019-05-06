@@ -9,7 +9,9 @@
   min-width: 32em;
   box-shadow: 0 0 1em hsla(0,0%,0%,0.15);
 }
-
+.App > .todoList > li {
+  position: relative;
+}
 .App > .todoList > li:nth-child(odd) {
   background: #7be6b6;
   color: white;

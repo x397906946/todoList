@@ -1,0 +1,9 @@
+.editTodo {
+  position: absolute;
+  width: 50%;
+  top: 0.5em;
+  line-height: 1.8;
+  margin-left: 1.5em;
+  font-size: 16px;
+  padding: 0 .2em;
+}
