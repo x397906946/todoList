@@ -25,7 +25,7 @@
 
 .UserDialog form > .row { display: flex; padding: 0.3em 0; }
 .UserDialog form > .row > label:first-child { width: 4em; }
-.UserDialog form > .row.actions { padding-left: 4em; display: flex; align-items: center;}
-.UserDialog form > .row.actions button { margin-right: 0.5em; }
+.UserDialog form > .row.actions { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end;}
+.UserDialog form > .row.actions button { width: 100%; background: #7be6b6; color: white; font-weight: bolder; margin-bottom: 0.5em;}
 
 .UserDialog button { font: inherit; padding: .5em; }
